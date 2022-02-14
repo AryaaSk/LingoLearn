@@ -1,5 +1,5 @@
 # LingoLearn
-This app used to be solely for German Vocabulary, I later expanded it to French and Spanish, however this causes the APIs to still have "germanTranslation" as the name for their trigger. It would break too many things if I changed their name
+This is the new LingoLearn Repository, since the other one was getting very complicated due to the name change. The only remains of germanHelper are the 2 APIs whose triggers are both called "germanTranslation"
 
 ## An App which lets you add language vocabulary words and converts them to english, gives you example sentences in both languages and tests you
 
