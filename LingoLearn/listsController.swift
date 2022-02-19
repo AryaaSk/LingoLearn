@@ -9,6 +9,7 @@ import UIKit
 
 class listsController: UIViewController {
 
+    @IBOutlet var newListOutlet: UIButton!
     @IBOutlet var emptyScreen: EmptyScreen!
     @IBOutlet var languageControl: UISegmentedControl!
     var showingLists: [languageList] = [] //instead of using languageLists, use this instead
@@ -20,10 +21,7 @@ class listsController: UIViewController {
 		tableView.dataSource = self
         
     }
-	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-	}
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //set the language
@@ -35,6 +33,32 @@ class listsController: UIViewController {
         { languageControl.selectedSegmentIndex = 2 }
         getLanguageList()
         tableView.reloadData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        //need to add  a bottom border to the newListOutlet button
+        setColours()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            setColours()
+        }
+    }
+    
+    func setColours()
+    {
+        if traitCollection.userInterfaceStyle == .dark {
+            //Dark
+            newListOutlet.addBottomBorderWithColor(color: UIColor.init(red: 50/255, green: 50/255, blue: 50/255, alpha: 1), width: 0.5)
+            //newListOutlet.addBottomBorderWithColor(color: UIColor.init(red: 255/255, green: 30/255, blue: 30/255, alpha: 1), width: 1)
+        }
+        else {
+            //Light
+            newListOutlet.addBottomBorderWithColor(color: UIColor.init(red: 215/255, green: 215/255, blue: 215/255, alpha: 1), width: 0.5)
+        }
     }
 	
     @IBAction func languageChanged(_ sender: Any) {
