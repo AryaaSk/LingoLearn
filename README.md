@@ -21,4 +21,4 @@ Here is the app on the app store: https://apps.apple.com/bs/app/lingolearn/id160
 
 Here is a preview of the App:
 
-![Preview Image](https://github.com/AryaaSk/germanHelper/blob/main/5.5%20Photos/Simulator%20Screen%20Shot%20-%20iPhone%208%20Plus%20-%202022-02-02%20at%2017.31.35.png)
+![Preview Image](https://github.com/AryaaSk/LingoLearn/blob/main/5.5%20Photos/Simulator%20Screen%20Shot%20-%20iPhone%208%20Plus%20-%202022-02-02%20at%2017.31.35.png?raw=true)
