@@ -9,13 +9,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     #header should be in format word1_word2_word3 (couldnt parse json)
     #here is github page for API: https://github.com/imankulov/linguee-api
     #here is the documentation for the API: https://linguee-api-v2.herokuapp.com/docs#/default/translations_api_v2_translations_get
-
     language = req.params.get('language')
     if language == None:
         language = "German" #always keep it capital
     language = language.capitalize()
 
     wordListString = req.params.get('wordList')
+
     wordList = wordListString.split("_")
 
     words = "{ \"words\" : [" #format of return
@@ -71,13 +71,15 @@ def getWord(word, language):
     elif language == "Spanish":
         languageQuery = "es"
 
-    url = "https://linguee-api-v2.herokuapp.com/api/v2/translations?query=" + word + "&src=" + languageQuery+ "&dst=en&guess_direction=true"
+    #url = "https://linguee-api-v2.herokuapp.com/api/v2/translations?query=" + word + "&src=" + languageQuery+ "&dst=en&guess_direction=true" #USED TO USE HEROKU, SWITCHED A WHILE AGO
+    url = f"https://linguee-api.fly.dev/api/v2/translations?query={word}&src={languageQuery}&dst=en&guess_direction=true"
     r = requests.get(url)
     text = r.text
     if text == "Internal Server Error":
         return "" #this means the user entered a word which doesnt exist in the APIs dictionary
 
     response = json.loads(text)
+
     #decode this text to get the original, translation, german example sentence, english translation. word type and gender
     try:
         original = str(response[0]['text'])

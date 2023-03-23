@@ -174,6 +174,7 @@ class ViewController: UIViewController {
             {
                 //now just call the api (uses linguee external API but if that fails it uses the old scrapper API)
                 let urlString = "https://aryaagermantranslatorapi.azurewebsites.net/api/germantranslation?wordList=" + word + "&language=" + language
+                print(urlString)
                 let encoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
                 let url = URL(string: encoded!)
                 
